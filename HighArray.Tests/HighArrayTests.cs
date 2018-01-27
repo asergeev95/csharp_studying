@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace HighArray.Tests
@@ -47,7 +46,7 @@ namespace HighArray.Tests
             array.Insert(1);
 
             var index = array.Find(1);
-            
+
             Assert.AreEqual(index, 0);
 
             array.Delete(1);
@@ -55,7 +54,6 @@ namespace HighArray.Tests
             index = array.Find(1);
 
             Assert.AreEqual(index, -1);
-
         }
     }
 }
