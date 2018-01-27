@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System;
+using System.Collections.Generic;
+using NUnit.Framework;
 
 namespace HighArray.Tests
 {
@@ -14,15 +16,37 @@ namespace HighArray.Tests
         }
 
         [Test]
-        public void ShouldInsertElement()
+        public void ShouldInsertAndFindElement()
         {
             var array = new HighArray(5);
-
             array.Insert(1);
 
-            var n = array.Get(array.Find(1));
+            var index = array.Find(1);
+            Assert.AreEqual(index, 0);
 
-            Assert.AreEqual(n, 1);
+            array.Insert(2);
+            index = array.Find(2);
+            Assert.AreEqual(index, 1);
+
+            var elem = array.Get(index);
+            Assert.AreEqual(elem, 2);
+        }
+
+        [Test]
+        public void ShouldThrowAnOutOfRangeException([Values(3, -1)] int index)
+        {
+            var array = new HighArray(3);
+
+            Assert.Catch(typeof(ArgumentOutOfRangeException), () => array.Get(index));
+        }
+
+        [Test]
+        public void ShouldDeleteElement()
+        {
+            var array = new HighArray(1);
+            array.Insert(1);
+
+            Assert.Catch(typeof(KeyNotFoundException), ()=> array.Delete(2));
         }
     }
 }

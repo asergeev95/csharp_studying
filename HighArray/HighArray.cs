@@ -5,11 +5,13 @@ namespace HighArray
 {
     public class HighArray
     {
-        private readonly int[] _array;
+        private int[] _array;
+        private int _numberOfElements;
 
         public HighArray(int n)
         {
             _array = new int[n];
+            _numberOfElements = 0;
         }
 
         public int Get(int index)
@@ -41,7 +43,8 @@ namespace HighArray
         {
             try
             {
-                _array[_array.Length-1] = elem;
+                _array[_numberOfElements] = elem;
+                _numberOfElements++;
             }
             catch
             {
@@ -54,16 +57,16 @@ namespace HighArray
         {
             var k = Find(elem);
 
-            if (k != -1)
+            try
             {
                 for (var i = k; i < _array.Length; i++)
                 {
                     _array[i] = _array[i + 1];
+                    _numberOfElements--;
                 }
-
             }
 
-            else
+            catch
             {
                 throw new KeyNotFoundException();
             }
