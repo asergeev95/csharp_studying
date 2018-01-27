@@ -46,7 +46,16 @@ namespace HighArray.Tests
             var array = new HighArray(1);
             array.Insert(1);
 
-            Assert.Catch(typeof(KeyNotFoundException), ()=> array.Delete(2));
+            var index = array.Find(1);
+            
+            Assert.AreEqual(index, 0);
+
+            array.Delete(1);
+
+            index = array.Find(1);
+
+            Assert.AreEqual(index, -1);
+
         }
     }
 }
