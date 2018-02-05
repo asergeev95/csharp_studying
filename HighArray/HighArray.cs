@@ -16,7 +16,7 @@ namespace HighArray
 
         public int Get(int index)
         {
-            if (index > 0 && index < _numberOfElements-1)
+            if (index > 0 && index < _numberOfElements - 1)
             {
                 return _array[index];
             }
@@ -34,6 +34,11 @@ namespace HighArray
                     k = i;
                     break;
                 }
+            }
+
+            if (k == -1)
+            {
+                throw new Exception("Element not found");
             }
 
             return k;
@@ -57,27 +62,19 @@ namespace HighArray
         {
             var k = Find(elem);
 
-            try
+            if (k == 0)
             {
-                if (k == 0)
+                _numberOfElements--;
+            }
+            else
+            {
+                for (var i = k; i < _array.Length; i++)
                 {
+                    _array[i] = _array[i + 1];
                     _numberOfElements--;
                 }
-                else
-                {
-                    for (var i = k; i < _array.Length; i++)
-                    {
-                        _array[i] = _array[i + 1];
-                        _numberOfElements--;
-                    }
-                }
-                
             }
 
-            catch
-            {
-                throw new KeyNotFoundException();
-            }
         }
     }
 }
