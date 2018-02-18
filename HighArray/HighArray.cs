@@ -8,6 +8,8 @@ namespace HighArray
         private int[] _array;
         private int _numberOfElements;
 
+        public int Length => _numberOfElements;
+
         public HighArray(int n)
         {
             _array = new int[n];
@@ -16,7 +18,7 @@ namespace HighArray
 
         public int Get(int index)
         {
-            if (index > 0 && index < _numberOfElements)
+            if (index >= 0 && index < _numberOfElements)
             {
                 return _array[index];
             }

@@ -86,5 +86,26 @@ namespace HighArray.Tests
             Assert.AreEqual(max, 1);
             
         }
+
+        [Test]
+        public void ShouldMakeSortedArray()
+        {
+            var fArray = new HighArray(3);
+
+            fArray.Insert(2);
+            fArray.Insert(3);
+            fArray.Insert(1);
+
+            var sArray = new HighArray(3);
+
+            for (var i = 0; i < fArray.Length; i++)
+            {
+                sArray.Insert(fArray.RemoveMax());
+            }
+
+            var sArrayFirstElem = sArray.Get(0);
+
+            Assert.AreEqual(sArrayFirstElem, 3);
+        }
     }
 }
