@@ -66,5 +66,25 @@ namespace HighArray.Tests
 
             Assert.AreEqual(max, 2);
         }
+
+        [Test]
+        public void ShouldDeleteMaxElement()
+        {
+            var array = new HighArray(2);
+
+            array.Insert(1);
+            array.Insert(2);
+
+            var max = array.GetMax();
+
+            Assert.AreEqual(max, 2);
+
+            array.RemoveMax();
+
+            max = array.GetMax();
+
+            Assert.AreEqual(max, 1);
+            
+        }
     }
 }

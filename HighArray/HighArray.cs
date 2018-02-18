@@ -67,11 +67,12 @@ namespace HighArray
             }
             else
             {
-                for (var i = k; i < _array.Length; i++)
+                for (var i = k; i < _numberOfElements - 1; i++)
                 {
                     _array[i] = _array[i + 1];
-                    _numberOfElements--;
+
                 }
+                _numberOfElements--;
             }
         }
 
@@ -79,7 +80,7 @@ namespace HighArray
         {
             var currentMax = -1;
 
-            for (var index = 0; index < _array.Length; index++)
+            for (var index = 0; index < _numberOfElements; index++)
             {
                 var elem = _array[index];
                 if (elem > currentMax)
@@ -89,6 +90,15 @@ namespace HighArray
             }
 
             return currentMax;
+        }
+
+        public int RemoveMax()
+        {
+            var max = GetMax();
+
+            Delete(max);
+
+            return max;
         }
     }
 }
