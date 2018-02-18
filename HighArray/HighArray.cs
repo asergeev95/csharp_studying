@@ -16,7 +16,7 @@ namespace HighArray
 
         public int Get(int index)
         {
-            if (index > 0 && index < _numberOfElements - 1)
+            if (index > 0 && index < _numberOfElements)
             {
                 return _array[index];
             }
@@ -55,7 +55,6 @@ namespace HighArray
             {
                 throw new OverflowException(nameof(_array));
             }
-
         }
 
         public void Delete(int elem)
@@ -74,7 +73,22 @@ namespace HighArray
                     _numberOfElements--;
                 }
             }
+        }
 
+        public int GetMax()
+        {
+            var currentMax = -1;
+
+            for (var index = 0; index < _array.Length; index++)
+            {
+                var elem = _array[index];
+                if (elem > currentMax)
+                {
+                    currentMax = elem;
+                }
+            }
+
+            return currentMax;
         }
     }
 }

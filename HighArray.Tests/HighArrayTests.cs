@@ -51,9 +51,20 @@ namespace HighArray.Tests
 
             array.Delete(1);
 
-            index = array.Find(1);
+            Assert.Catch(() => array.Find(1), "Element not found");
+            
+        }
 
-            Assert.AreEqual(index, -1);
+        [Test]
+        public void ShouldGetMaxElement()
+        {
+            var array = new HighArray(2);
+            array.Insert(1);
+            array.Insert(2);
+
+            var max = array.GetMax();
+
+            Assert.AreEqual(max, 2);
         }
     }
 }
